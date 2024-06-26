@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1719394173998" clover="3.2.0">
+  <project timestamp="1719394173998" name="All files">
+    <metrics statements="32" coveredstatements="32" conditionals="26" coveredconditionals="26" methods="15" coveredmethods="15" elements="73" coveredelements="73" complexity="0" loc="32" ncloc="32" packages="1" files="1" classes="1"/>
+    <file name="gilded_rose.js" path="/Users/javifs/Github Repos/GildedRose-Refactoring-Kata/js-jest/src/gilded_rose.js">
+      <metrics statements="32" coveredstatements="32" conditionals="26" coveredconditionals="26" methods="15" coveredmethods="15"/>
+      <line num="3" count="252" type="stmt"/>
+      <line num="4" count="252" type="stmt"/>
+      <line num="5" count="252" type="stmt"/>
+      <line num="11" count="108" type="stmt"/>
+      <line num="15" count="54" type="cond" truecount="2" falsecount="0"/>
+      <line num="16" count="45" type="stmt"/>
+      <line num="20" count="72" type="cond" truecount="2" falsecount="0"/>
+      <line num="21" count="45" type="stmt"/>
+      <line num="25" count="36" type="stmt"/>
+      <line num="26" count="36" type="cond" truecount="2" falsecount="0"/>
+      <line num="32" count="18" type="stmt"/>
+      <line num="33" count="18" type="cond" truecount="2" falsecount="0"/>
+      <line num="39" count="18" type="stmt"/>
+      <line num="46" count="36" type="stmt"/>
+      <line num="48" count="36" type="cond" truecount="2" falsecount="0"/>
+      <line num="49" count="9" type="stmt"/>
+      <line num="50" count="9" type="stmt"/>
+      <line num="53" count="27" type="stmt"/>
+      <line num="54" count="27" type="cond" truecount="2" falsecount="0"/>
+      <line num="55" count="27" type="cond" truecount="2" falsecount="0"/>
+      <line num="61" count="18" type="stmt"/>
+      <line num="62" count="18" type="cond" truecount="2" falsecount="0"/>
+      <line num="68" count="126" type="cond" truecount="5" falsecount="0"/>
+      <line num="70" count="18" type="stmt"/>
+      <line num="72" count="18" type="stmt"/>
+      <line num="74" count="36" type="stmt"/>
+      <line num="76" count="18" type="stmt"/>
+      <line num="78" count="36" type="stmt"/>
+      <line num="85" count="126" type="stmt"/>
+      <line num="89" count="126" type="stmt"/>
+      <line num="90" count="9" type="stmt"/>
+      <line num="153" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
