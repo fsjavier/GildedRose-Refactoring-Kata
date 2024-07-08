@@ -12,7 +12,10 @@ const BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
 
 class Shop {
   constructor(items = []) {
-    this.items = items;
+    this.items = items.map((item) => {
+      if (item.name === SULFURAS) item.quality = 80;
+      return item;
+    });
   }
 
   decreaseQuality(item) {

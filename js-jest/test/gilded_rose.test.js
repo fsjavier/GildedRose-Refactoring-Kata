@@ -58,7 +58,7 @@ describe("Gilded Rose with items", () => {
 
   it("should not decrease quality of Sulfuras", () => {
     const items = [
-      new Item("Sulfuras, Hand of Ragnaros", 0, 80),
+      new Item("Sulfuras, Hand of Ragnaros", 0, 50),
       new Item("Sulfuras, Hand of Ragnaros", -1, 80),
     ];
     gildedRose = new Shop(items);
