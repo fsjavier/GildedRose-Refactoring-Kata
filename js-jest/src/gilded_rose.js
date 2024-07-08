@@ -104,8 +104,7 @@ class Shop {
   }
 
   updateQuality() {
-    for (let i = 0; i < this.items.length; i++) {
-      const item = this.items[i];
+    this.items.forEach((item) => {
       const { name: itemName } = item;
 
       this.updateItemQuality(item);
@@ -115,7 +114,7 @@ class Shop {
       }
 
       this.handleExpiration(item);
-    }
+    });
 
     return this.items;
   }
