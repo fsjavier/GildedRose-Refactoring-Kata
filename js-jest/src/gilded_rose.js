@@ -15,19 +15,19 @@ class Shop {
   }
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
-      if (
-        this.items[i].name != AGED_BRIE &&
-        this.items[i].name != BACKSTAGE_PASSES
-      ) {
+      const item = this.items[i];
+      const { name: itemName, quality, sellIn } = item;
+
+      if (itemName != AGED_BRIE && itemName != BACKSTAGE_PASSES) {
         if (this.items[i].quality > 0) {
-          if (this.items[i].name != SULFURAS) {
+          if (itemName != SULFURAS) {
             this.items[i].quality = this.items[i].quality - 1;
           }
         }
       } else {
         if (this.items[i].quality < 50) {
           this.items[i].quality = this.items[i].quality + 1;
-          if (this.items[i].name == BACKSTAGE_PASSES) {
+          if (itemName == BACKSTAGE_PASSES) {
             if (this.items[i].sellIn < 11) {
               if (this.items[i].quality < 50) {
                 this.items[i].quality = this.items[i].quality + 1;
@@ -41,14 +41,14 @@ class Shop {
           }
         }
       }
-      if (this.items[i].name != SULFURAS) {
+      if (itemName != SULFURAS) {
         this.items[i].sellIn = this.items[i].sellIn - 1;
       }
       if (this.items[i].sellIn < 0) {
-        if (this.items[i].name != AGED_BRIE) {
-          if (this.items[i].name != BACKSTAGE_PASSES) {
+        if (itemName != AGED_BRIE) {
+          if (itemName != BACKSTAGE_PASSES) {
             if (this.items[i].quality > 0) {
-              if (this.items[i].name != SULFURAS) {
+              if (itemName != SULFURAS) {
                 this.items[i].quality = this.items[i].quality - 1;
               }
             }
