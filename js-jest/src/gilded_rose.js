@@ -36,14 +36,10 @@ class Shop {
       item.quality = this.increaseQuality(item);
 
       if (item.sellIn < 11) {
-        if (item.quality < 50) {
-          item.quality = this.increaseQuality(item);
-        }
+        item.quality = this.increaseQuality(item);
       }
       if (item.sellIn < 6) {
-        if (item.quality < 50) {
-          item.quality = this.increaseQuality(item);
-        }
+        item.quality = this.increaseQuality(item);
       }
     }
   }
