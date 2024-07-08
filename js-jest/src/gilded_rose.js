@@ -49,7 +49,7 @@ class Shop {
   }
 
   updateItemQuality(item) {
-    const { name: itemName, quality: itemQuality, sellIn: itemSellIn } = item;
+    const { name: itemName } = item;
 
     switch (itemName) {
       case AGED_BRIE:
@@ -66,23 +66,20 @@ class Shop {
   }
 
   handleExpiration(item) {
-    const { name: itemName, quality: itemQuality } = item;
+    const { name: itemName } = item;
 
     if (item.sellIn < 0) {
-      if (itemName != AGED_BRIE) {
-        if (itemName != BACKSTAGE_PASSES) {
-          if (itemQuality > 0) {
-            if (itemName != SULFURAS) {
-              item.quality = this.decreaseQuality(item);
-            }
-          }
-        } else {
-          item.quality = item.quality - item.quality;
-        }
-      } else {
-        if (itemQuality < 50) {
-          item.quality = this.increaseQuality(item);
-        }
+      switch (itemName) {
+        case AGED_BRIE:
+          this.updateAgedBrie(item);
+          break;
+        case BACKSTAGE_PASSES:
+          item.quality = 0;
+          break;
+        case SULFURAS:
+          break;
+        default:
+          this.updateDefaultItem(item);
       }
     }
   }
