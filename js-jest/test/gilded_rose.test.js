@@ -96,7 +96,7 @@ describe("Gilded Rose with items", () => {
     const items = [new Item("Conjured Mana Cake", 0, 8)];
     gildedRose = new Shop(items);
     gildedRose.updateQuality();
-    expect(gildedRose.items[13].quality).toBe(4);
-    expect(gildedRose.items[13].sellIn).toBe(-1);
+    expect(gildedRose.items[0].quality).toBe(4);
+    expect(gildedRose.items[0].sellIn).toBe(-1);
   });
 });
