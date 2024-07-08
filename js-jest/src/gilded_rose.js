@@ -27,7 +27,8 @@ class Shop {
     return item.sellIn - 1;
   }
 
-  updateItemQuality(itemName, itemQuality, item, itemSellIn) {
+  updateItemQuality(item) {
+    const { name: itemName, quality: itemQuality, sellIn: itemSellIn } = item;
     if (itemName != AGED_BRIE && itemName != BACKSTAGE_PASSES) {
       if (itemQuality > 0) {
         if (itemName != SULFURAS) {
@@ -53,7 +54,9 @@ class Shop {
     }
   }
 
-  handleExpiration(item, itemName, itemQuality) {
+  handleExpiration(item) {
+    const { name: itemName, quality: itemQuality } = item;
+
     if (item.sellIn < 0) {
       if (itemName != AGED_BRIE) {
         if (itemName != BACKSTAGE_PASSES) {
@@ -76,15 +79,15 @@ class Shop {
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       const item = this.items[i];
-      const { name: itemName, quality: itemQuality, sellIn: itemSellIn } = item;
+      const { name: itemName } = item;
 
-      this.updateItemQuality(itemName, itemQuality, item, itemSellIn);
+      this.updateItemQuality(item);
 
       if (itemName != SULFURAS) {
         item.sellIn = this.decreaseSellIn(item);
       }
 
-      this.handleExpiration(item, itemName, itemQuality);
+      this.handleExpiration(item);
     }
 
     return this.items;
