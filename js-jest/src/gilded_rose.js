@@ -42,9 +42,9 @@ class Shop {
         }
       }
       if (itemName != SULFURAS) {
-        this.items[i].sellIn = this.items[i].sellIn - 1;
+        item.sellIn = item.sellIn - 1;
       }
-      if (this.items[i].sellIn < 0) {
+      if (item.sellIn < 0) {
         if (itemName != AGED_BRIE) {
           if (itemName != BACKSTAGE_PASSES) {
             if (itemQuality > 0) {
