@@ -84,7 +84,7 @@ describe("Gilded Rose with items", () => {
     expect(gildedRose.items[3].quality).toBe(0);
   });
 
-  it.skip("should degrade quality of conjured items twice as fast", () => {
+  it("should degrade quality of conjured items twice as fast", () => {
     const items = [new Item("Conjured Mana Cake", 3, 6)];
     gildedRose = new Shop(items);
     gildedRose.updateQuality();
@@ -92,7 +92,7 @@ describe("Gilded Rose with items", () => {
     expect(gildedRose.items[0].sellIn).toBe(2);
   });
 
-  it.skip("should degrade quality of conjured items by 4 after sell date", () => {
+  it("should degrade quality of conjured items by 4 after sell date", () => {
     const items = [new Item("Conjured Mana Cake", 0, 8)];
     gildedRose = new Shop(items);
     gildedRose.updateQuality();

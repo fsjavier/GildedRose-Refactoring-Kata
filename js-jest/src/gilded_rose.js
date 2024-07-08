@@ -18,8 +18,8 @@ class Shop {
     });
   }
 
-  decreaseQuality(item) {
-    return item.quality - 1;
+  decreaseQuality(item, quantity = 1) {
+    return item.quality - quantity;
   }
 
   increaseQuality(item) {
@@ -47,6 +47,14 @@ class Shop {
     }
   }
 
+  isConjured(itemName) {
+    return itemName.startsWith("Conjured");
+  }
+
+  updateConjured(item) {
+    if (item.quality > 0) item.quality = this.decreaseQuality(item, 2);
+  }
+
   updateDefaultItem(item) {
     if (item.quality > 0) item.quality = this.decreaseQuality(item);
   }
@@ -54,17 +62,21 @@ class Shop {
   updateItemQuality(item) {
     const { name: itemName } = item;
 
-    switch (itemName) {
-      case AGED_BRIE:
-        this.updateAgedBrie(item);
-        break;
-      case BACKSTAGE_PASSES:
-        this.updateBackStagePasses(item);
-        break;
-      case SULFURAS:
-        break;
-      default:
-        this.updateDefaultItem(item);
+    if (this.isConjured(itemName)) {
+      this.updateConjured(item);
+    } else {
+      switch (itemName) {
+        case AGED_BRIE:
+          this.updateAgedBrie(item);
+          break;
+        case BACKSTAGE_PASSES:
+          this.updateBackStagePasses(item);
+          break;
+        case SULFURAS:
+          break;
+        default:
+          this.updateDefaultItem(item);
+      }
     }
   }
 
@@ -72,17 +84,21 @@ class Shop {
     const { name: itemName } = item;
 
     if (item.sellIn < 0) {
-      switch (itemName) {
-        case AGED_BRIE:
-          this.updateAgedBrie(item);
-          break;
-        case BACKSTAGE_PASSES:
-          item.quality = 0;
-          break;
-        case SULFURAS:
-          break;
-        default:
-          this.updateDefaultItem(item);
+      if (this.isConjured(itemName)) {
+        this.updateConjured(item);
+      } else {
+        switch (itemName) {
+          case AGED_BRIE:
+            this.updateAgedBrie(item);
+            break;
+          case BACKSTAGE_PASSES:
+            item.quality = 0;
+            break;
+          case SULFURAS:
+            break;
+          default:
+            this.updateDefaultItem(item);
+        }
       }
     }
   }
