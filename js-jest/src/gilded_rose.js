@@ -16,7 +16,7 @@ class Shop {
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       const item = this.items[i];
-      const { name: itemName, quality: itemQuality, sellIn } = item;
+      const { name: itemName, quality: itemQuality, sellIn: itemSellIn } = item;
 
       if (itemName != AGED_BRIE && itemName != BACKSTAGE_PASSES) {
         if (itemQuality > 0) {
@@ -28,12 +28,12 @@ class Shop {
         if (itemQuality < 50) {
           item.quality = item.quality + 1;
           if (itemName == BACKSTAGE_PASSES) {
-            if (this.items[i].sellIn < 11) {
+            if (itemSellIn < 11) {
               if (item.quality < 50) {
                 item.quality = item.quality + 1;
               }
             }
-            if (this.items[i].sellIn < 6) {
+            if (itemSellIn < 6) {
               if (item.quality < 50) {
                 item.quality = item.quality + 1;
               }
