@@ -53,6 +53,26 @@ class Shop {
     }
   }
 
+  handleExpiration(item, itemName, itemQuality) {
+    if (item.sellIn < 0) {
+      if (itemName != AGED_BRIE) {
+        if (itemName != BACKSTAGE_PASSES) {
+          if (itemQuality > 0) {
+            if (itemName != SULFURAS) {
+              item.quality = this.decreaseQuality(item);
+            }
+          }
+        } else {
+          item.quality = item.quality - item.quality;
+        }
+      } else {
+        if (itemQuality < 50) {
+          item.quality = this.increaseQuality(item);
+        }
+      }
+    }
+  }
+
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       const item = this.items[i];
@@ -63,23 +83,8 @@ class Shop {
       if (itemName != SULFURAS) {
         item.sellIn = this.decreaseSellIn(item);
       }
-      if (item.sellIn < 0) {
-        if (itemName != AGED_BRIE) {
-          if (itemName != BACKSTAGE_PASSES) {
-            if (itemQuality > 0) {
-              if (itemName != SULFURAS) {
-                item.quality = this.decreaseQuality(item);
-              }
-            }
-          } else {
-            item.quality = item.quality - item.quality;
-          }
-        } else {
-          if (itemQuality < 50) {
-            item.quality = this.increaseQuality(item);
-          }
-        }
-      }
+
+      this.handleExpiration(item, itemName, itemQuality);
     }
 
     return this.items;
