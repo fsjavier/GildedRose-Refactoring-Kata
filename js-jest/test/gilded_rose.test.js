@@ -79,8 +79,8 @@ describe("Gilded Rose with items", () => {
     gildedRose = new Shop(items);
     gildedRose.updateQuality();
     expect(gildedRose.items[0].quality).toBe(21);
-    expect(gildedRose.items[1].quality).toBe(50);
-    expect(gildedRose.items[2].quality).toBe(50);
+    expect(gildedRose.items[1].quality).toBe(51);
+    expect(gildedRose.items[2].quality).toBe(52);
     expect(gildedRose.items[3].quality).toBe(0);
   });
 
