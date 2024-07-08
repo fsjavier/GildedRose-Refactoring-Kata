@@ -23,6 +23,10 @@ class Shop {
     return item.quality + 1;
   }
 
+  decreaseSellIn(item) {
+    return item.sellIn - 1;
+  }
+
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       const item = this.items[i];
@@ -52,7 +56,7 @@ class Shop {
         }
       }
       if (itemName != SULFURAS) {
-        item.sellIn = item.sellIn - 1;
+        item.sellIn = this.decreaseSellIn(item);
       }
       if (item.sellIn < 0) {
         if (itemName != AGED_BRIE) {
