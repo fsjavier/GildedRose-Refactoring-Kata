@@ -16,16 +16,16 @@ class Shop {
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       const item = this.items[i];
-      const { name: itemName, quality, sellIn } = item;
+      const { name: itemName, quality: itemQuality, sellIn } = item;
 
       if (itemName != AGED_BRIE && itemName != BACKSTAGE_PASSES) {
-        if (this.items[i].quality > 0) {
+        if (itemQuality > 0) {
           if (itemName != SULFURAS) {
             this.items[i].quality = this.items[i].quality - 1;
           }
         }
       } else {
-        if (this.items[i].quality < 50) {
+        if (itemQuality < 50) {
           this.items[i].quality = this.items[i].quality + 1;
           if (itemName == BACKSTAGE_PASSES) {
             if (this.items[i].sellIn < 11) {
@@ -57,7 +57,7 @@ class Shop {
               this.items[i].quality - this.items[i].quality;
           }
         } else {
-          if (this.items[i].quality < 50) {
+          if (itemQuality < 50) {
             this.items[i].quality = this.items[i].quality + 1;
           }
         }
