@@ -9,10 +9,16 @@ class Item {
 const SULFURAS = "Sulfuras, Hand of Ragnaros";
 const AGED_BRIE = "Aged Brie";
 const BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+
 class Shop {
   constructor(items = []) {
     this.items = items;
   }
+
+  decreaseQuality(item) {
+    return item.quality - 1;
+  }
+
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       const item = this.items[i];
@@ -21,7 +27,7 @@ class Shop {
       if (itemName != AGED_BRIE && itemName != BACKSTAGE_PASSES) {
         if (itemQuality > 0) {
           if (itemName != SULFURAS) {
-            item.quality = item.quality - 1;
+            item.quality = this.decreaseQuality(item);
           }
         }
       } else {
@@ -49,7 +55,7 @@ class Shop {
           if (itemName != BACKSTAGE_PASSES) {
             if (itemQuality > 0) {
               if (itemName != SULFURAS) {
-                item.quality = item.quality - 1;
+                item.quality = this.decreaseQuality(item);
               }
             }
           } else {
