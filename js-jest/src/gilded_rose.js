@@ -19,6 +19,10 @@ class Shop {
     return item.quality - 1;
   }
 
+  increaseQuality(item) {
+    return item.quality + 1;
+  }
+
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       const item = this.items[i];
@@ -32,16 +36,16 @@ class Shop {
         }
       } else {
         if (itemQuality < 50) {
-          item.quality = item.quality + 1;
+          item.quality = this.increaseQuality(item);
           if (itemName == BACKSTAGE_PASSES) {
             if (itemSellIn < 11) {
               if (item.quality < 50) {
-                item.quality = item.quality + 1;
+                item.quality = this.increaseQuality(item);
               }
             }
             if (itemSellIn < 6) {
               if (item.quality < 50) {
-                item.quality = item.quality + 1;
+                item.quality = this.increaseQuality(item);
               }
             }
           }
@@ -63,7 +67,7 @@ class Shop {
           }
         } else {
           if (itemQuality < 50) {
-            item.quality = item.quality + 1;
+            item.quality = this.increaseQuality(item);
           }
         }
       }
