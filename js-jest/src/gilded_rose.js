@@ -27,34 +27,39 @@ class Shop {
     return item.sellIn - 1;
   }
 
+  updateItemQuality(itemName, itemQuality, item, itemSellIn) {
+    if (itemName != AGED_BRIE && itemName != BACKSTAGE_PASSES) {
+      if (itemQuality > 0) {
+        if (itemName != SULFURAS) {
+          item.quality = this.decreaseQuality(item);
+        }
+      }
+    } else {
+      if (itemQuality < 50) {
+        item.quality = this.increaseQuality(item);
+        if (itemName == BACKSTAGE_PASSES) {
+          if (itemSellIn < 11) {
+            if (item.quality < 50) {
+              item.quality = this.increaseQuality(item);
+            }
+          }
+          if (itemSellIn < 6) {
+            if (item.quality < 50) {
+              item.quality = this.increaseQuality(item);
+            }
+          }
+        }
+      }
+    }
+  }
+
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       const item = this.items[i];
       const { name: itemName, quality: itemQuality, sellIn: itemSellIn } = item;
 
-      if (itemName != AGED_BRIE && itemName != BACKSTAGE_PASSES) {
-        if (itemQuality > 0) {
-          if (itemName != SULFURAS) {
-            item.quality = this.decreaseQuality(item);
-          }
-        }
-      } else {
-        if (itemQuality < 50) {
-          item.quality = this.increaseQuality(item);
-          if (itemName == BACKSTAGE_PASSES) {
-            if (itemSellIn < 11) {
-              if (item.quality < 50) {
-                item.quality = this.increaseQuality(item);
-              }
-            }
-            if (itemSellIn < 6) {
-              if (item.quality < 50) {
-                item.quality = this.increaseQuality(item);
-              }
-            }
-          }
-        }
-      }
+      this.updateItemQuality(itemName, itemQuality, item, itemSellIn);
+
       if (itemName != SULFURAS) {
         item.sellIn = this.decreaseSellIn(item);
       }
