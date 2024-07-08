@@ -27,30 +27,45 @@ class Shop {
     return item.sellIn - 1;
   }
 
+  updateAgedBrie(item) {
+    if (item.quality < 50) item.quality = this.increaseQuality(item);
+  }
+
+  updateBackStagePasses(item) {
+    if (item.quality < 50) {
+      item.quality = this.increaseQuality(item);
+
+      if (item.sellIn < 11) {
+        if (item.quality < 50) {
+          item.quality = this.increaseQuality(item);
+        }
+      }
+      if (item.sellIn < 6) {
+        if (item.quality < 50) {
+          item.quality = this.increaseQuality(item);
+        }
+      }
+    }
+  }
+
+  updateDefaultItem(item) {
+    if (item.quality > 0) item.quality = this.decreaseQuality(item);
+  }
+
   updateItemQuality(item) {
     const { name: itemName, quality: itemQuality, sellIn: itemSellIn } = item;
-    if (itemName != AGED_BRIE && itemName != BACKSTAGE_PASSES) {
-      if (itemQuality > 0) {
-        if (itemName != SULFURAS) {
-          item.quality = this.decreaseQuality(item);
-        }
-      }
-    } else {
-      if (itemQuality < 50) {
-        item.quality = this.increaseQuality(item);
-        if (itemName == BACKSTAGE_PASSES) {
-          if (itemSellIn < 11) {
-            if (item.quality < 50) {
-              item.quality = this.increaseQuality(item);
-            }
-          }
-          if (itemSellIn < 6) {
-            if (item.quality < 50) {
-              item.quality = this.increaseQuality(item);
-            }
-          }
-        }
-      }
+
+    switch (itemName) {
+      case AGED_BRIE:
+        this.updateAgedBrie(item);
+        break;
+      case BACKSTAGE_PASSES:
+        this.updateBackStagePasses(item);
+        break;
+      case SULFURAS:
+        break;
+      default:
+        this.updateDefaultItem(item);
     }
   }
 
