@@ -32,6 +32,7 @@ class Shop {
 
   updateAgedBrie(item) {
     if (item.quality < 50) item.quality = this.increaseQuality(item);
+    if (item.quality > 50) item.quality = 50;
   }
 
   updateBackStagePasses(item) {
@@ -45,6 +46,7 @@ class Shop {
         item.quality = this.increaseQuality(item);
       }
     }
+    if (item.quality > 50) item.quality = 50;
   }
 
   isConjured(itemName) {
